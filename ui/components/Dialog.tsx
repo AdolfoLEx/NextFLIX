@@ -1,25 +1,35 @@
 "use client";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
+//import Image from "next/image";
 
 type DialogProps = {
   trigger: React.ReactNode;
   children: React.ReactNode;
 
-  title?: string;
-  description?: string;
-  image?: string;
-  footer?: React.ReactNode;
+  /*
+    title?: string;
+    description?: string;
+    image?: string;
+  */
+  titulo?: string;
+  sinopsis?: string;
+  urlPortada?: string;
 
+  footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
 };
 
 export default function DialogComponent({
   trigger,
   children,
+  /*
   title,
   description,
   image,
+  */
+  titulo,
+  sinopsis,
+  urlPortada,
   footer,
   size = "md",
 }: DialogProps) {
@@ -55,6 +65,8 @@ export default function DialogComponent({
             </div>
           )}
           */}
+
+          {/*
           {image && (
             <div className={`relative w-full shrink-0 ${imageHeights[size]}`}>
               <img
@@ -64,16 +76,26 @@ export default function DialogComponent({
               />
             </div>
           )}
+          */}
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeY4rprVKYoyo0ZD0jjMPLGwZSsuuvm8VxCIlf_W-2EA&s=10"
+            alt="Serie Destacada"
+            src={urlPortada}
+            alt={titulo || "Dialog Image"}
+            className="w-72 object-contain"
+            width={320}
+            height={160}
+          />
 
           <div className="flex min-h-0 flex-1 flex-col p-6">
-            {title && (
+            {titulo && (
               <Dialog.Title className="pr-10 text-xl font-bold tracking-tight text-slate-900">
-                {title}
+                {titulo}
               </Dialog.Title>
             )}
-            {description && (
+            {sinopsis && (
               <Dialog.Description className="mt-2 text-sm leading-6 text-slate-500">
-                {description}
+                {sinopsis}
               </Dialog.Description>
             )}
             <div className="mt-5 min-h-0 flex-1 overflow-y-auto pr-1">

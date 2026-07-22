@@ -90,7 +90,7 @@ export default function SerieCard({
         </div>
 
         <div className="mt-auto pt-6">
-          <p className="text-lg font-bold text-slate-900">${estreno}</p>
+          <p className="text-lg font-bold text-slate-900">{estreno}</p>
         </div>
 
       </div>

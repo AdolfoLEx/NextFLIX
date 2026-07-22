@@ -40,8 +40,8 @@ export default function DeleteSerieModal({
   return (
     <DialogComponent
       trigger={trigger}
-      title="Eliminar Serie"
-      description="¿Estás seguro de que quieres eliminar esta serie?"
+      titulo="Eliminar Serie"
+      sinopsis="¿Estás seguro de que quieres eliminar esta serie?"
       size="sm"
       footer={
         <>

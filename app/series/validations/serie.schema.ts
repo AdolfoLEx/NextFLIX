@@ -2,14 +2,14 @@ import { object, string, minLength, pipe, description } from "valibot";
 
 export const serieSchema = object(
     {
-        title: pipe(
+        titulo: pipe(
             string(),
             minLength(3, "El título debe tener al menos 3 caracteres"),
         ),
 
-        description: pipe(
+        sinopsis: pipe(
             string(),
-        minLength(10, "La descripción debe tener al menos 10 caracteres"),
+        minLength(10, "La sinopsis debe tener al menos 10 caracteres"),
         ),  
     }
 );

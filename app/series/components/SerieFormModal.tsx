@@ -78,10 +78,11 @@ export default function SerieFormModal({ trigger, serie }: Props) {
       //await createSerie(payload); // ORIGINAL
 
       // 🟢 6. EJECUTAR CALLBACK PARA NOTIFICAR AL PADRE
-      /*if (onSuccess) {
+      /*
+      if (onSuccess) {
           onSuccess();
         }
-    */
+      */
 
     } catch {
       // El estado de error se maneja desde el Hook
@@ -91,8 +92,8 @@ export default function SerieFormModal({ trigger, serie }: Props) {
   return (
     <DialogComponent
       trigger={trigger}
-      title={serie ? "Editar Serie" : "Agregar Serie"}
-      description="Completa información de la serie"
+      titulo={serie ? "Editar Serie" : "Agregando series"}
+      sinopsis="Información de la serie"
       size="lg"
       footer={
         <div className="flex gap-3">

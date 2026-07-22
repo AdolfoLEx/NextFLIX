@@ -30,13 +30,13 @@ export default function SerieDetailModal({ serie, trigger }: Props) {
   return (
     <DialogComponent
       trigger={trigger}
-      title={serie.titulo}
-      description={serie.sinopsis}
-      image={serie.urlPortada}
+      titulo={serie.titulo}
+      sinopsis={serie.sinopsis}
+      urlPortada={serie.urlPortada}
       size="md"
       footer={
         <p className="text-sm text-muted-foreground">
-          Precio: ${serie.estreno}
+          Estreno: {serie.estreno}
         </p>
       }
     >
