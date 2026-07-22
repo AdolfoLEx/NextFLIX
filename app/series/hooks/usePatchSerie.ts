@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { PostProductRequest, PostProductResponse } from '../interfaces/product.interface';
-import { patchProduct } from '../service/product.service';
+import { PostProductRequest, PostProductResponse } from '../interfaces/serie.interface';
+import { patchProduct } from '../service/serie.service';
 
 export default function usePatchProduct() {
   const [loading, setLoading] = useState(false);

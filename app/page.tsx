@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import ProductCard from "./productos/components/ProductCard";
+import ProductCard from "./series/components/SerieCard";
 import Banner from "@/ui/components/Banner";
 import CartBubble from "@/ui/components/CartBubble";
 

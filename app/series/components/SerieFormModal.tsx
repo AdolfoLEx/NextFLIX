@@ -1,14 +1,14 @@
 import DialogComponent from "@/ui/components/Dialog";
 import { useState } from "react";
-import { PostProductRequest } from "../interfaces/product.interface";
+import { PostProductRequest } from "../interfaces/serie.interface";
 
 //import { Product } from "@/data/products";
-import { Product } from "../interfaces/getproduct.interface";
-import usePostProduct from "../hooks/usePostProduct";
-import usePatchProduct from "../hooks/usePatchProduct";
+import { Product } from "../interfaces/getSerie.interface";
+import usePostProduct from "../hooks/usePostSerie";
+import usePatchProduct from "../hooks/usePatchSerie";
 
 import { safeParse } from "valibot";
-import { productSchema } from "../validations/product.schema";
+import { productSchema } from "../validations/serie.schema";
 
 
 type Props = {

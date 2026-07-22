@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Eye, Pencil, PlusIcon, Trash2 } from "lucide-react";
-import ProductCard from "@/app/productos/components/ProductCard";
-import { useGetProduct } from "./hooks/useGetProduct";
-import ProductFormModal from "./components/ProductFormModal";
-import DeleteProductModal from "./components/DeleteProductDialog";
-import ProductDetailModal from "./components/ProductDetailModal";
+import ProductCard from "@/app/series/components/SerieCard";
+import { useGetProduct } from "./hooks/useGetSerie";
+import ProductFormModal from "./components/SerieFormModal";
+import DeleteProductModal from "./components/DeleteSerieDialog";
+import ProductDetailModal from "./components/SerieDetailModal";
 
 export default function Productos() {
   const { products, loading, error } = useGetProduct();

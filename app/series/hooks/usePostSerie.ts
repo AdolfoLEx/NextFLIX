@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { PostProductRequest, PostProductResponse } from '../interfaces/product.interface';
-import { postProduct } from '../service/product.service';
+import { PostProductRequest, PostProductResponse } from '../interfaces/serie.interface';
+import { postProduct } from '../service/serie.service';
 
 export default function usePostProduct() {
     const [loading, setLoading] = useState(false);

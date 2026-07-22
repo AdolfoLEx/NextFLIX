@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { DeleteProductResponse } from '../interfaces/product.interface';
-import { deleteProduct } from '../service/product.service';
+import { DeleteProductResponse } from '../interfaces/serie.interface';
+import { deleteProduct } from '../service/serie.service';
 
 export default function useDeleteProduct() {
         const [loading, setLoading] = useState(false);

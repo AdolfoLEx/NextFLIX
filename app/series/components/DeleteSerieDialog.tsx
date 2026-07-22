@@ -1,7 +1,7 @@
 "use client";
 import DialogComponent from "@/ui/components/Dialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import useDeleteProduct from "../hooks/useDeleteProduct";
+import useDeleteProduct from "../hooks/useDeleteSerie";
 
 type Props = {
   trigger: React.ReactNode;

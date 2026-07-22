@@ -4,7 +4,7 @@ import {
   PostProductResponse, 
   DeleteProductResponse,
   PatchProductResponse, 
-} from "../interfaces/product.interface";
+} from "../interfaces/serie.interface";
 //import { products } from "@/data/products";
 
 /*
