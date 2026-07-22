@@ -1,23 +1,23 @@
 import { useState } from 'react'
 
-import { PostProductRequest, PostProductResponse } from '../interfaces/serie.interface';
-import { postProduct } from '../service/serie.service';
+import { PostSerieRequest, PostSerieResponse } from '../interfaces/serie.interface';
+import { postSerie } from '../service/serie.service';
 
-export default function usePostProduct() {
+export default function usePostSerie() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const createProduct = async (
-        data: PostProductRequest,
-    ): Promise<PostProductResponse> => {
+    const createSerie = async (
+        data: PostSerieRequest,
+    ): Promise<PostSerieResponse> => {
         setLoading(true);
         setError(null);
 
         try {
-            const createProduct = await postProduct(data)
-            return createProduct;
+            const createSerie = await postSerie(data)
+            return createSerie;
         } catch (error) {
-            setError("Error al crear producto");
+            setError("Error al crear serie");
             throw error;
         } finally {
             setLoading(false);
@@ -25,7 +25,7 @@ export default function usePostProduct() {
     };
 
     return {
-        createProduct,
+        createSerie,
         loading,
         error
     };

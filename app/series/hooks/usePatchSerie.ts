@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import { PostProductRequest, PostProductResponse } from '../interfaces/serie.interface';
-import { patchProduct } from '../service/serie.service';
+import { PostSerieRequest, PostSerieResponse } from '../interfaces/serie.interface';
+import { patchSerie } from '../service/serie.service';
 
-export default function usePatchProduct() {
+export default function usePatchSerie() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const updateProduct = async (
+  const updateSerie = async (
     id: number,
-    data: Partial<PostProductRequest>,
-  ): Promise<PostProductResponse> => {
+    data: Partial<PostSerieRequest>,
+  ): Promise<PostSerieResponse> => {
     setLoading(true);
     setError(null);
 
     try {
-      const updatedProduct = await patchProduct(id, data);
-      return updatedProduct;
+      const updatedSerie = await patchSerie(id, data);
+      return updatedSerie;
     } catch (err) {
-      setError("Error al actualizar producto.");
+      setError("Error al actualizar serie.");
       throw err;
     } finally {
       setLoading(false);
@@ -25,7 +25,7 @@ export default function usePatchProduct() {
   };
 
   return {
-    updateProduct,
+    updateSerie,
     loading,
     error,
   };

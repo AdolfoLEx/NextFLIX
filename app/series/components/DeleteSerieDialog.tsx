@@ -1,47 +1,47 @@
 "use client";
 import DialogComponent from "@/ui/components/Dialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import useDeleteProduct from "../hooks/useDeleteSerie";
+import useDeleteSerie from "../hooks/useDeleteSerie";
 
 type Props = {
   trigger: React.ReactNode;
-  productId: number;
+  serieId: number;
   onDelete: (id: number) => void;
 };
 
-export default function DeleteProductModal({
+export default function DeleteSerieModal({
   trigger,
-  productId,
+  serieId,
   onDelete,
 }: Props) {
 
-  const { removeProduct, loading, error } = useDeleteProduct();
+  const { removeSerie, loading, error } = useDeleteSerie();
 
   const handleDelete = async () => {
     try {
-      await removeProduct(productId);
-      onDelete(productId);
+      await removeSerie(serieId);
+      onDelete(serieId);
     } catch {
-      console.error("Error al eliminar producto", error);
+      console.error("Error al eliminar serie", error);
       // El error se maneja desde el hook
     }
   }
 /*
   const handleDelete = async (id: number) => {
     try {
-      await removeProduct(id);
-      // ⚠️ ¡Importante! Tienes que filtrar el estado actual para quitar el producto eliminado
-      setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+      await removeSerie(id);
+      // ⚠️ ¡Importante! Tienes que filtrar el estado actual para quitar la serie eliminada
+      setSeries((prevSeries) => prevSeries.filter((serie) => serie.id !== id));
     } catch (error) {
-      console.error("Error eliminando producto:", error);
+      console.error("Error eliminando serie:", error);
     }
   };
 */
   return (
     <DialogComponent
       trigger={trigger}
-      title="Eliminar Producto"
-      description="¿Estás seguro de que quieres eliminar este producto?"
+      title="Eliminar Serie"
+      description="¿Estás seguro de que quieres eliminar esta serie?"
       size="sm"
       footer={
         <>
@@ -50,7 +50,7 @@ export default function DeleteProductModal({
           </DialogPrimitive.Close>
           <button
             className="px-4 py-2 bg-red-500 text-white rounded"
-            //onClick={() => onDelete(productId)}
+            //onClick={() => onDelete(serieId)}
             onClick={handleDelete}
             disabled={loading}
           >

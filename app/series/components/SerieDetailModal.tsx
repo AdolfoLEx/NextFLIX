@@ -1,6 +1,6 @@
 import DialogComponent from "@/ui/components/Dialog";
 
-type Product = {
+type Serie = {
   id: number;
   title: string;
   description: string;
@@ -9,21 +9,21 @@ type Product = {
 };
 
 type Props = {
-  product: Product;
+  serie: Serie;
   trigger: React.ReactNode;
 };
 
-export default function ProductDetailModal({ product, trigger }: Props) {
+export default function SerieDetailModal({ serie, trigger }: Props) {
   return (
     <DialogComponent
       trigger={trigger}
-      title={product.title}
-      description={product.description}
-      image={product.image}
+      title={serie.title}
+      description={serie.description}
+      image={serie.image}
       size="md"
       footer={
         <p className="text-sm text-muted-foreground">
-          Precio: ${product.price}
+          Precio: ${serie.price}
         </p>
       }
     >

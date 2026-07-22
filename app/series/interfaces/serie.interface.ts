@@ -56,3 +56,21 @@ export interface PatchProductResponse {
     image:       string;
     rating:      Rating;
 }
+
+
+// ==========================================
+// INTERFACES PARA SERIES
+// ==========================================
+
+
+export interface TopLevel {
+    id:           number;
+    titulo:       string;
+    genero:       string;
+    sinopsis:     string;
+    urlPortada:   string;
+    estreno:      number;
+    calificacion: number;
+    plataforma:   string;
+}
+

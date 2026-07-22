@@ -1,27 +1,27 @@
 import { useState } from 'react';
-import { DeleteProductResponse } from '../interfaces/serie.interface';
-import { deleteProduct } from '../service/serie.service';
+import { DeleteSerieResponse } from '../interfaces/serie.interface';
+import { deleteSerie } from '../service/serie.service';
 
-export default function useDeleteProduct() {
+export default function useDeleteSerie() {
         const [loading, setLoading] = useState(false);
         const [error, setError] = useState<string | null>(null);
 
-        const removeProduct = async(id:number): Promise<DeleteProductResponse> => {
+        const removeSerie = async(id:number): Promise<DeleteSerieResponse> => {
             setLoading(true);
             setError(null);
 
             try {
-                const deletedProduct = await deleteProduct(id);
-                return deletedProduct;
+                const deletedSerie = await deleteSerie(id);
+                return deletedSerie;
             } catch(error) {
-                setError("Error al eliminar producto.");
+                setError("Error al eliminar serie.");
                 throw error;
             } finally {
                 setLoading(false);
             }
         };
   return {
-    removeProduct,
+    removeSerie,
     loading,
     error,
   };

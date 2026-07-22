@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
-import { Product } from "../interfaces/getSerie.interface";
-import { getProducts } from "../service/serie.service";
+import { Serie } from "../interfaces/serie.interface";
+import { getSeries } from "../service/serie.service";
 
-export function useGetProduct() {
-  const [products, setProducts] = useState<Product[]>([]);
+export function useGetSerie() {
+  const [series, setSeries] = useState<Serie[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getProducts()
+    getSeries()
       .then((data) => {
-        setProducts(data);
+        setSeries(data);
         setLoading(false);
       })
       // ✅ Esto te dirá exactamente qué pasó
       .catch((err) => {
         console.error("Detalle del error:", err); // <-- Revisa la consola de tu navegador
-        setError(err.message || "Error al cargar productos");
+        setError(err.message || "Error al cargar series");
         setLoading(false);
       });
     /*  .catch (() => {
@@ -25,7 +25,7 @@ export function useGetProduct() {
     });*/
 }, []);
 return {
-  products,
+  series,
   loading,
   error,
 };

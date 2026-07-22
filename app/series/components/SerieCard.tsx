@@ -1,7 +1,7 @@
 //import Image from "next/image";
 import React from "react";
 
-type ProductCardProps = {
+type SerieCardProps = {
   title: string;
   price: number;
   image: string;
@@ -11,7 +11,7 @@ type ProductCardProps = {
   actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
 };
 
-export default function ProductCard({
+export default function SerieCard({
   title,
   price,
   image,
@@ -19,7 +19,7 @@ export default function ProductCard({
   rating,
   category,
   actions,
-}: ProductCardProps) {
+}: SerieCardProps) {
   return (
     <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
       {/* 

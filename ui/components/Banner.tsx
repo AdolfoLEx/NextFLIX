@@ -6,26 +6,26 @@ export default function Banner() {
       <div className="max-w-6xl mx-auto px-6 py-20 grid grid-cols-2 gap-10 items-center">
         <div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Encuentra los mejores productos
+            Encuentra las mejores Series y Películas
           </h1>
           <p className="text-lg text-blue-100 mb-8">
-            Descubre nuestra colección de productos con los mejores precios y la
+            Descubre nuestra inmensa colección de Series y Películas con los mejores precios y la
             mejor calidad.
           </p>
           <Link
-            href="/productos"
+            href="/series"
             className="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-100 transition"
           >
-            Ver productos
+            Ver nuestras Series
           </Link>
         </div>
         <div className="flex justify-center">
           <img
-            src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
-            alt="Producto Destacado"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeY4rprVKYoyo0ZD0jjMPLGwZSsuuvm8VxCIlf_W-2EA&s=10"
+            alt="Serie Destacada"
             className="w-72 object-contain"
-            width={80}
-            height={80}
+            width={320}
+            height={160}
           />
         </div>
       </div>

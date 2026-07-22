@@ -1,6 +1,6 @@
 import { object, string, minLength, pipe, description } from "valibot";
 
-export const productSchema = object(
+export const serieSchema = object(
     {
         title: pipe(
             string(),

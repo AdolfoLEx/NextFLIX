@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import ProductCard from "./series/components/SerieCard";
+import SerieCard from "./series/components/SerieCard";
 import Banner from "@/ui/components/Banner";
 import CartBubble from "@/ui/components/CartBubble";
 
@@ -15,21 +15,21 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <Banner />
       <div className="max-w-6xl mx-auto px-6 py-20">
-        {/* Products */}
+        {/* Series */}
         <div className="mt-24">
           <h2 className="text-2xl font-bold text-slate-900 text-center">
-            Productos destacados
+            Series destacadas
           </h2>
           <p className="mt-2 text-slate-500 text-center">
-            Un vistazo a cómo luce nuestro componente ProductCard.
+            ¿Quieres ver una de nuestras Series?
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProductCard
-              title="Producto de ejemplo"
-              price={19.99}
-              image="https://cdn.thewirecutter.com/wp-content/media/2024/07/laptopstopicpage-2048px-3685-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp"
-              description="Este es un producto de ejemplo para mostrar cómo se ve un ProductCard."
+            <SerieCard
+              title="Serie o Película de ejemplo"
+              price={19.00}
+              image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxsMYDYTWUSR5KVp29wK8dEuhTZ1mOSmsja4aPVkLyOA&s=10"
+              description="Este es una serie de ejemplo de SerieCard."
             />
           </div>
         </div>

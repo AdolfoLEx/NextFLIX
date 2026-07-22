@@ -1,43 +1,42 @@
 import DialogComponent from "@/ui/components/Dialog";
 import { useState } from "react";
-import { PostProductRequest } from "../interfaces/serie.interface";
+import { PostSerieRequest } from "../interfaces/serie.interface";
 
-//import { Product } from "@/data/products";
-import { Product } from "../interfaces/getSerie.interface";
-import usePostProduct from "../hooks/usePostSerie";
-import usePatchProduct from "../hooks/usePatchSerie";
+import { Serie } from "../interfaces/serie.interface";
+import usePostSerie from "../hooks/usePostSerie";
+import usePatchSerie from "../hooks/usePatchSerie";
 
 import { safeParse } from "valibot";
-import { productSchema } from "../validations/serie.schema";
+import { serieSchema } from "../validations/serie.schema";
 
 
 type Props = {
   trigger: React.ReactNode;
-  //product?: PostProductRequest;
-  product?: Product;
+  //serie?: PostSerieRequest;
+  serie?: Serie;
   onSuccess?: () => void;
 };
-export default function ProductFormModal({ trigger, product }: Props) {
-  const { createProduct, loading, error } = usePostProduct();
+export default function SerieFormModal({ trigger, serie }: Props) {
+  const { createSerie, loading, error } = usePostSerie();
 
-  //const { updateProduct} = usePatchProduct();
-  const { updateProduct, loading: loadingUpdate, error: errorUpdate } = usePatchProduct();
+  //const { updateSerie} = usePatchSerie();
+  const { updateSerie, loading: loadingUpdate, error: errorUpdate } = usePatchSerie();
 
   // Determinar si hay alguna carga o error activo
   //const loading = loadingCreate || loadingUpdate;
   //const error = errorCreate || errorUpdate;
 
-  const [title, setTitle] = useState(product?.title || "");
-  const [description, setDescription] = useState(product?.description || "");
-  const [price, setPrice] = useState(product?.price || 0);
+  const [title, setTitle] = useState(serie?.title || "");
+  const [description, setDescription] = useState(serie?.description || "");
+  const [price, setPrice] = useState(serie?.price || 0);
 
-  const [category, setCategory] = useState(product?.category || "");
-  const [image, setImage] = useState(product?.image || "");
-  const [rate, setRate] = useState(product?.rating?.rate || 0);
-  const [count, setCount] = useState(product?.rating?.count || 0);
+  const [category, setCategory] = useState(serie?.category || "");
+  const [image, setImage] = useState(serie?.image || "");
+  const [rate, setRate] = useState(serie?.rating?.rate || 0);
+  const [count, setCount] = useState(serie?.rating?.count || 0);
 
   const handleSubmit = async () => {
-    const payload: PostProductRequest = {
+    const payload: PostSerieRequest = {
       title,
       description,
       price,
@@ -49,7 +48,7 @@ export default function ProductFormModal({ trigger, product }: Props) {
       },
     };
 
-    const result = safeParse(productSchema, payload);
+    const result = safeParse(serieSchema, payload);
     if (!result.success) {
       const firstError = result.issues[0]?.message;
       alert(firstError);
@@ -58,15 +57,15 @@ export default function ProductFormModal({ trigger, product }: Props) {
 
     try {
 
-      if (product?.id) {
+      if (serie?.id) {
         // Modo Edición
-        await updateProduct(product.id, payload);
+        await updateSerie(serie.id, payload);
       } else {
         // Modo Creación
-        await createProduct(payload);
+        await createSerie(payload);
       }
 
-      //await createProduct(payload); // ORIGINAL
+      //await createSerie(payload); // ORIGINAL
 
       // 🟢 6. EJECUTAR CALLBACK PARA NOTIFICAR AL PADRE
       /*if (onSuccess) {
@@ -82,8 +81,8 @@ export default function ProductFormModal({ trigger, product }: Props) {
   return (
     <DialogComponent
       trigger={trigger}
-      title={product ? "Editar Producto" : "Agregar Producto"}
-      description="Completa la información del producto"
+      title={serie ? "Editar Serie" : "Agregar Serie"}
+      description="Completa información de la serie"
       size="lg"
       footer={
         <div className="flex gap-3">

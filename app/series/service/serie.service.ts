@@ -1,23 +1,23 @@
 import { apiFetch } from "@/service/api";
 import { 
-  PostProductRequest, 
-  PostProductResponse, 
-  DeleteProductResponse,
-  PatchProductResponse, 
+  PostSerieRequest, 
+  PostSerieResponse, 
+  DeleteSerieResponse,
+  PatchSerieResponse, 
 } from "../interfaces/serie.interface";
-//import { products } from "@/data/products";
+//import { series } from "@/data/series";
 
 /*
-export async function getProducts() {
-  return apiFetch("/products");
+export async function getSeries() {
+  return apiFetch("/series");
 }
 */
 
 /*
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getProducts() {
-  const response = await fetch(`${API_URL}/products`, {
+export async function getSeries() {
+  const response = await fetch(`${API_URL}/series`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export async function getProducts() {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getProducts() {
+export async function getSeries() {
   // 1. Diagnóstico: Verificar si la variable de entorno está cargando
   if (!API_URL) {
     console.error("⚠️ La variable NEXT_PUBLIC_API_URL no está definida en tu archivo .env.local");
@@ -65,9 +65,9 @@ export function postProduct(
 }
 */
 
-export function postProduct(
-  data: PostProductRequest,
-): Promise<PostProductResponse> {
+export function postSerie(
+  data: PostSerieRequest,
+): Promise<PostSerieResponse> {
   return apiFetch("/products", {
     method: "POST",
     headers: {
@@ -78,13 +78,13 @@ export function postProduct(
   });
 }
 /*
-export function deleteProduct(id: number): Promise<DeleteProductResponse> {
-  return apiFetch(`/products/${id}`, {
+export function deleteSerie(id: number): Promise<DeleteSerieResponse> {
+  return apiFetch(`/series/${id}`, {
     method: "DELETE",
   });
 }*/
 
-export function deleteProduct(id: number | string): Promise<DeleteProductResponse> {
+export function deleteSerie(id: number | string): Promise<DeleteSerieResponse> {
   return apiFetch(`/products/${id}`, {
     method: "DELETE",
     headers: {
@@ -95,10 +95,10 @@ export function deleteProduct(id: number | string): Promise<DeleteProductRespons
 }
 
 
-export function patchProduct(
+export function patchSerie(
   id: number,
-  data: Partial<PostProductRequest>,
-): Promise<PatchProductResponse> {
+  data: Partial<PostSerieRequest>,
+): Promise<PatchSerieResponse> {
   return apiFetch(`/products/${id}`, {
     method: "PATCH",
     headers: {
