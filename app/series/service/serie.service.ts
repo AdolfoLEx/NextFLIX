@@ -35,7 +35,7 @@ export async function getSeries() {
     console.error("⚠️ La variable NEXT_PUBLIC_API_URL no está definida en tu archivo .env.local");
   }
 
-  const response = await fetch(`${API_URL}/products`, {
+  const response = await fetch(`${API_URL}/series`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export async function getSeries() {
   // 2. Validación: Verificar que el servidor devolvió una respuesta OK (200-299)
   if (!response.ok) {
     const errorText = await response.text();
-    console.error(`❌ Error HTTP ${response.status} llamando a ${API_URL}/products:`, errorText);
+    console.error(`❌ Error HTTP ${response.status} llamando a ${API_URL}/series:`, errorText);
     throw new Error(`Error en el servidor (${response.status})`);
   }
 
@@ -58,7 +58,7 @@ export async function getSeries() {
 export function postSerie(
   data: PostSerieRequest,
 ): Promise<PostSerieResponse> {
-  return apiFetch("/products", {
+  return apiFetch("/series", {
     method: "POST",
     body: JSON.stringify(data),
   });
@@ -68,7 +68,7 @@ export function postSerie(
 export function postSerie(
   data: PostSerieRequest,
 ): Promise<PostSerieResponse> {
-  return apiFetch("/products", {
+  return apiFetch("/series", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export function deleteSerie(id: number): Promise<DeleteSerieResponse> {
 }*/
 
 export function deleteSerie(id: number | string): Promise<DeleteSerieResponse> {
-  return apiFetch(`/products/${id}`, {
+  return apiFetch(`/series/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export function patchSerie(
   id: number,
   data: Partial<PostSerieRequest>,
 ): Promise<PatchSerieResponse> {
-  return apiFetch(`/products/${id}`, {
+  return apiFetch(`/series/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

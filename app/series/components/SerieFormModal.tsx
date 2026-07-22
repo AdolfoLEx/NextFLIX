@@ -26,16 +26,16 @@ export default function SerieFormModal({ trigger, serie }: Props) {
   //const loading = loadingCreate || loadingUpdate;
   //const error = errorCreate || errorUpdate;
 
-  const [title, setTitle] = useState(serie?.title || "");
-  const [description, setDescription] = useState(serie?.description || "");
-  const [price, setPrice] = useState(serie?.price || 0);
-
-  const [category, setCategory] = useState(serie?.category || "");
-  const [image, setImage] = useState(serie?.image || "");
-  const [rate, setRate] = useState(serie?.rating?.rate || 0);
-  const [count, setCount] = useState(serie?.rating?.count || 0);
-
+  const [titulo, setTitulo] = useState(serie?.titulo || "");
+  const [genero, setGenero] = useState(serie?.genero || "");
+  const [sinopsis, setSinopsis] = useState(serie?.sinopsis || "");
+  const [urlPortada, setUrlPortada] = useState(serie?.urlPortada || "");
+  const [estreno, setEstreno] = useState(serie?.estreno || 0);
+  const [calificacion, setCalificacion] = useState(serie?.calificacion || 0);
+  const [plataforma, setPlataforma] = useState(serie?.plataforma || "");
+  
   const handleSubmit = async () => {
+    /*
     const payload: PostSerieRequest = {
       title,
       description,
@@ -46,6 +46,16 @@ export default function SerieFormModal({ trigger, serie }: Props) {
         rate,
         count,
       },
+    };
+    */
+    const payload: PostSerieRequest = {
+      titulo,
+      genero,
+      sinopsis,
+      urlPortada,
+      estreno,
+      calificacion,
+      plataforma,
     };
 
     const result = safeParse(serieSchema, payload);
@@ -105,61 +115,62 @@ export default function SerieFormModal({ trigger, serie }: Props) {
             <p className="col-span-1 md:col-span-2 text-red-600">{error}</p>
           )
         }
+
         <div className="space-y-2">
           <label className="block text-sm font-semibold tracking-wide text-slate-800">
             Título
           </label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
           />
         </div>
 
         <div className="space-y-2">
           <label className="block text-sm font-semibold tracking-wide text-slate-800">
-            Descripción
+            Género
+          </label>
+          <input
+            type="text"
+            value={genero}
+            onChange={(e) => setGenero(e.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold tracking-wide text-slate-800">
+            Sinopsis
           </label>
           <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={sinopsis}
+            onChange={(e) => setSinopsis(e.target.value)}
             className="min-h-32 w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
           />
         </div>
 
         <div className="space-y-2">
           <label className="block text-sm font-semibold tracking-wide text-slate-800">
-            Precio
+            URL Portada
+          </label>
+          <input
+            type="text"
+            value={urlPortada}
+            onChange={(e) => setUrlPortada(e.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="block text-sm font-semibold tracking-wide text-slate-800">
+            Estreno
           </label>
           <input
             type="number"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
-            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold tracking-wide text-slate-800">
-            Categoría
-          </label>
-          <input
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
-          />
-        </div>
-
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold tracking-wide text-slate-800">
-            Imagen
-          </label>
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={estreno}
+            onChange={(e) => setEstreno(Number(e.target.value))}
             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
           />
         </div>
@@ -170,20 +181,21 @@ export default function SerieFormModal({ trigger, serie }: Props) {
           </label>
           <input
             type="number"
-            value={rate}
-            onChange={(e) => setRate(Number(e.target.value))}
+            value={calificacion}
+            onChange={(e) => setCalificacion(Number(e.target.value))}
             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
           />
         </div>
 
+
         <div className="space-y-2">
           <label className="block text-sm font-semibold tracking-wide text-slate-800">
-            Número de reseñas
+            Plataforma
           </label>
           <input
-            type="number"
-            value={count}
-            onChange={(e) => setCount(Number(e.target.value))}
+            type="text"
+            value={plataforma}
+            onChange={(e) => setPlataforma(e.target.value)}
             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-200"
           />
         </div>

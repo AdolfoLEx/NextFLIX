@@ -1,6 +1,7 @@
 //import Image from "next/image";
 import React from "react";
 
+/*
 type SerieCardProps = {
   title: string;
   price: number;
@@ -10,8 +11,20 @@ type SerieCardProps = {
   category?: string; // Propiedad opcional para la categoría
   actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
 };
+*/
+type SerieCardProps = {
+  titulo: string;
+  genero: string;
+  sinopsis: string;
+  urlPortada: string;
+  estreno: number;
+  calificacion?: number; // Opcional la Calificación
+  plataforma: string;
+};
+
 
 export default function SerieCard({
+  /*
   title,
   price,
   image,
@@ -19,6 +32,14 @@ export default function SerieCard({
   rating,
   category,
   actions,
+  */
+  titulo,
+  genero,
+  sinopsis,
+  urlPortada,
+  estreno,
+  calificacion,
+  plataforma,
 }: SerieCardProps) {
   return (
     <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
@@ -30,11 +51,11 @@ export default function SerieCard({
         alt={title}
         className="h-50 w-full object-contain"
       />*/}
-      
+
       {/* Etiqueta HTML nativa <img> */}
       <img
-        src={image || "/placeholder.png"} // Un fallback opcional por si image viene vacío o null
-        alt={title}
+        src={urlPortada || "/placeholder.png"} // Un fallback opcional por si image viene vacío o null
+        alt={titulo}
         className="h-50 w-full object-contain p-2"
         loading="lazy" // Carga diferida nativa del navegador
         onError={(e) => {
@@ -46,31 +67,38 @@ export default function SerieCard({
       <div className="flex flex-1 flex-col p-4">
         <div className="space-y-3">
           <h2 className="text-lg font-semibold leading-snug text-slate-900">
-            {title}
+            {titulo}
           </h2>
-          {rating !== undefined && (
-            <div className="flex items-center gap-1 text-sm">
-              <span className="text-yellow-500">★</span>
-              <span className="text-slate-600">{rating.toFixed(1)}</span>
-            </div>
-          )}
-          {category && (
+
+          {genero && (
             <span className="inline-flex w-fit rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
-              {category}
+              {genero}
             </span>
           )}
+
           <p className="text-sm leading-6 text-slate-600">
-            {description.slice(0, 80)}...
+            {sinopsis.slice(0, 80)}...
           </p>
+
+          {calificacion !== undefined && (
+            <div className="flex items-center gap-1 text-sm">
+              <span className="text-yellow-500">★</span>
+              <span className="text-slate-600">{calificacion.toFixed(1)}</span>
+            </div>
+          )}
+
         </div>
 
         <div className="mt-auto pt-6">
-          <p className="text-lg font-bold text-slate-900">${price}</p>
+          <p className="text-lg font-bold text-slate-900">${estreno}</p>
         </div>
+
       </div>
+
       <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
-        {actions}
+        {plataforma}
       </div>
+
     </div>
   );
 }

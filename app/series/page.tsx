@@ -73,12 +73,12 @@ export default function Series() {
         {filteredSeries.map((serie) => (
           <SerieCard
             key={serie.id}
-            title={serie.title}
-            price={serie.price}
-            description={serie.description}
-            image={serie.image}
-            rating={serie.rating?.rate}
-            category={serie.category}
+            titulo={serie.titulo}
+            estreno={serie.estreno}
+            sinopsis={serie.sinopsis}
+            urlPortada={serie.urlPortada}
+            calificacion={serie.rating?.calificacion}
+            genero={serie.genero}
             actions={
               <div className="flex w-full items-center justify-between gap-3">
                 <SerieDetailModal
