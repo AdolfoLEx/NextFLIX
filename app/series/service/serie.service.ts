@@ -55,9 +55,9 @@ export async function getSeries() {
 }
 
 /*
-export function postProduct(
-  data: PostProductRequest,
-): Promise<PostProductResponse> {
+export function postSerie(
+  data: PostSerieRequest,
+): Promise<PostSerieResponse> {
   return apiFetch("/products", {
     method: "POST",
     body: JSON.stringify(data),

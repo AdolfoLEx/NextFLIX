@@ -20,7 +20,7 @@ export function useGetSerie() {
         setLoading(false);
       });
     /*  .catch (() => {
-      setError("Error al cargar productos");
+      setError("Error al cargar series");
       setLoading(false);
     });*/
 }, []);

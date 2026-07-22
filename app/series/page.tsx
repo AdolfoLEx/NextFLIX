@@ -113,7 +113,7 @@ export default function Series() {
                   <DeleteSerieModal
                     serieId={serie.id}
                     onDelete={() =>
-                      console.log(`Producto con ID ${serie.id} eliminado`)
+                      console.log(`Serie con ID ${serie.id} eliminado`)
                     }
                     trigger={
                       <button
