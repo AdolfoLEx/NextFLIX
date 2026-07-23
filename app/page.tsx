@@ -27,7 +27,7 @@ export default function Home() {
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <SerieCard
               titulo="Serie o Película de ejemplo"
-              estreno={19.00}
+              estreno={2000}
               urlPortada="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxsMYDYTWUSR5KVp29wK8dEuhTZ1mOSmsja4aPVkLyOA&s=10"
               sinopsis="Este es una serie de ejemplo de SerieCard."
             />

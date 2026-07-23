@@ -14,12 +14,13 @@ type SerieCardProps = {
 */
 type SerieCardProps = {
   titulo: string;
-  genero: string;
+  genero?: string; // Opcional
   sinopsis: string;
   urlPortada: string;
   estreno: number;
   calificacion?: number; // Opcional la Calificación
-  plataforma: string;
+  plataforma?: string;
+  actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
 };
 
 
@@ -40,6 +41,7 @@ export default function SerieCard({
   estreno,
   calificacion,
   plataforma,
+  actions,
 }: SerieCardProps) {
   return (
     <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
@@ -93,10 +95,14 @@ export default function SerieCard({
           <p className="text-lg font-bold text-slate-900">{estreno}</p>
         </div>
 
+        <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
+          {plataforma}
+        </div>
+
       </div>
 
       <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
-        {plataforma}
+        {actions}
       </div>
 
     </div>
