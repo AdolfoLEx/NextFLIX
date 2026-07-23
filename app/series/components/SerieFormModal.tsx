@@ -2,7 +2,7 @@ import DialogComponent from "@/ui/components/Dialog";
 import { useState } from "react";
 import { PostSerieRequest } from "../interfaces/serie.interface";
 
-import { Serie } from "../interfaces/serie.interface";
+//import { Serie } from "../interfaces/serie.interface";
 import usePostSerie from "../hooks/usePostSerie";
 import usePatchSerie from "../hooks/usePatchSerie";
 
