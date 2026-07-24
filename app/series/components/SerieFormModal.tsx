@@ -13,7 +13,7 @@ import { serieSchema } from "../validations/serie.schema";
 type Props = {
   trigger: React.ReactNode;
   //serie?: PostSerieRequest;
-  serie?: Serie;
+  //serie?: Serie;
   onSuccess?: () => void;
 };
 export default function SerieFormModal({ trigger, serie }: Props) {

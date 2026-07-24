@@ -1,4 +1,3 @@
-//import Image from "next/image";
 import React from "react";
 
 /*
@@ -22,7 +21,6 @@ type SerieCardProps = {
   plataforma?: string;
   actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
 };
-
 
 export default function SerieCard({
   /*
@@ -68,9 +66,17 @@ export default function SerieCard({
 
       <div className="flex flex-1 flex-col p-4">
         <div className="space-y-3">
+
           <h2 className="text-lg font-semibold leading-snug text-slate-900">
             {titulo}
           </h2>
+          
+          {calificacion !== undefined && (
+            <div className="flex items-center gap-1 text-sm">
+              <span className="text-yellow-700">★</span>
+              <span className="text-slate-600">{calificacion.toFixed(1)}</span>
+            </div>
+          )}
 
           {genero && (
             <span className="inline-flex w-fit rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
@@ -82,12 +88,7 @@ export default function SerieCard({
             {sinopsis.slice(0, 80)}...
           </p>
 
-          {calificacion !== undefined && (
-            <div className="flex items-center gap-1 text-sm">
-              <span className="text-yellow-500">★</span>
-              <span className="text-slate-600">{calificacion.toFixed(1)}</span>
-            </div>
-          )}
+
 
         </div>
 
