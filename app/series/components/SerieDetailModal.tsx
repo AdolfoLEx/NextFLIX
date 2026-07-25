@@ -33,10 +33,11 @@ export default function SerieDetailModal({ serie, trigger }: Props) {
       trigger={trigger}
       titulo={serie.titulo}
       sinopsis={serie.sinopsis}
-      urlPortada={serie.urlPortada}
+      urlPortada={serie.urlPortada}      
       size="md"
       footer={
         <p className="text-sm text-red-900">
+            <span>{serie.plataforma}</span>
             Estreno: <span className="font-semibold">{serie.estreno}</span>
         </p>
       }

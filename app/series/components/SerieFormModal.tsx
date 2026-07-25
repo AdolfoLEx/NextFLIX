@@ -2,7 +2,7 @@ import DialogComponent from "@/ui/components/Dialog";
 import { useState } from "react";
 import { PostSerieRequest } from "../interfaces/serie.interface";
 
-//import { Serie } from "../interfaces/serie.interface";
+import { Serie } from "../interfaces/serie.interface";
 import usePostSerie from "../hooks/usePostSerie";
 import usePatchSerie from "../hooks/usePatchSerie";
 
@@ -15,7 +15,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 type Props = {
   trigger: React.ReactNode;
   //serie?: PostSerieRequest;
-  //serie?: Serie;
+  serie?: Serie;
   onSuccess?: () => void;
 };
 export default function SerieFormModal({ trigger, serie }: Props) {

@@ -18,7 +18,7 @@ type SerieCardProps = {
   urlPortada: string;
   estreno: number;
   calificacion?: number; // Opcional la Calificación
-  plataforma?: string;
+  plataforma: string;
   actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
 };
 
@@ -41,6 +41,8 @@ export default function SerieCard({
   plataforma,
   actions,
 }: SerieCardProps) {
+
+  console.log("Datos de la serie:", { titulo, plataforma });
   return (
     <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-gray-300 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
       {/* 
@@ -70,7 +72,7 @@ export default function SerieCard({
           <h2 className="text-center text-lg font-semibold leading-snug text-slate-900">
             {titulo}
           </h2>
-          
+
           {calificacion !== undefined && (
             <div className="flex items-center gap-1 text-sm">
               <span className="text-yellow-600">★</span>
@@ -90,12 +92,13 @@ export default function SerieCard({
 
         </div>
 
-        <div className="mt-auto pt-6">
-          <p className="text-lg font-extralight text-red-800">{estreno}</p>
-        </div>
 
         <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
           <p className="text-lg text-green-800">{plataforma}</p>
+        </div>
+
+        <div className="mt-auto pt-6">
+          <p className="text-lg font-extralight text-red-800">{estreno}</p>
         </div>
 
       </div>
