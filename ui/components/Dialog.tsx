@@ -1,20 +1,12 @@
 "use client";
 import * as Dialog from "@radix-ui/react-dialog";
-//import Image from "next/image";
 
 type DialogProps = {
   trigger: React.ReactNode;
   children: React.ReactNode;
-
-  /*
-    title?: string;
-    description?: string;
-    image?: string;
-  */
   titulo?: string;
   sinopsis?: string;
   urlPortada?: string;
-
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg";
 };
@@ -22,11 +14,6 @@ type DialogProps = {
 export default function DialogComponent({
   trigger,
   children,
-  /*
-  title,
-  description,
-  image,
-  */
   titulo,
   sinopsis,
   urlPortada,
@@ -39,11 +26,6 @@ export default function DialogComponent({
     lg: "w-[min(92vw,38rem)] h-[min(88vh,42rem)]",
   };
 
-  const imageHeights = {
-    sm: "h-40",
-    md: "h-52",
-    lg: "h-64",
-  };
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
@@ -52,65 +34,48 @@ export default function DialogComponent({
         <Dialog.Content
           className={`pt-4 fixed left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-3xl bg-white shadow-2xl outline-none ${sizes[size]}`}
         >
-          {/* 
-          {image && (
-            <div className={`relative w-full shrink-0 ${imageHeights[size]}`}>
-              <Image
-                src={image}
-                alt={title || "Dialog Image"}
-                fill
-                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 28rem, 38rem"
-                className="object-contain"
-              />
-            </div>
-          )}
-          */}
-
-          {/*
-          {image && (
-            <div className={`relative w-full shrink-0 ${imageHeights[size]}`}>
+          {/* 1. Imagen con altura fija y sin capacidad de encogerse/agrandarse */}
+          {urlPortada && (
+            <div className="relative h-48 w-full shrink-0 px-6">
               <img
-                src={image}
-                alt={title || "Dialog Image"}
-                className="absolute inset-0 w-full h-full object-contain"
+                src={urlPortada}
+                alt={titulo || "Portada"}
+                className="h-full w-full object-contain mx-auto block rounded-2xl"
               />
             </div>
           )}
-          */}
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeY4rprVKYoyo0ZD0jjMPLGwZSsuuvm8VxCIlf_W-2EA&s=10"
-            alt="Serie Destacada"
-            src={urlPortada}
-            alt={titulo || "Dialog Image"}
-            className="w-72 object-contain"
-            width={320}
-            height={160}
-          />
 
-          <div className="flex min-h-0 flex-1 flex-col p-6">
-            {titulo && (
-              <Dialog.Title className="pr-10 text-xl font-bold tracking-tight text-slate-900">
-                {titulo}
-              </Dialog.Title>
-            )}
-            {sinopsis && (
-              <Dialog.Description className="mt-2 text-sm leading-6 text-slate-500">
-                {sinopsis}
-              </Dialog.Description>
-            )}
-            <div className="mt-5 min-h-0 flex-1 overflow-y-auto pr-1">
-              {children}
+          {/* 2. Cuerpo del modal con scroll interno para que el contenido no desborde */}
+          <div className="flex min-h-0 flex-1 flex-col p-6 overflow-hidden">
+            <div className="flex-1 overflow-y-auto pr-1">
+              {titulo && (
+                <Dialog.Title className="text-center text-xl font-bold tracking-tight text-slate-900">
+                  {titulo}
+                </Dialog.Title>
+              )}
+
+              {sinopsis && (
+                <Dialog.Description asChild className="mt-3 text-sm leading-relaxed text-slate-600">
+                  <p>{sinopsis}</p>
+                </Dialog.Description>
+              )}
+
+              <div className="mt-4">{children}</div>
             </div>
 
+            {/* 3. Footer fijo al final del modal */}
             {footer && (
-              <div className="mt-6 flex justify-end gap-3 border-t border-slate-100 pt-5">
+              <div className="mt-4 shrink-0 flex justify-end gap-3 border-t border-slate-100 pt-4">
                 {footer}
               </div>
             )}
-            <Dialog.Close className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400">
-              <span className="text-xl leading-none">×</span>
-            </Dialog.Close>
           </div>
+
+          {/* Botón para cerrar */}
+          <Dialog.Close className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400">
+            <span className="text-xl leading-none">×</span>
+          </Dialog.Close>
+          
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

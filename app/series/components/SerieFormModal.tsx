@@ -9,6 +9,8 @@ import usePatchSerie from "../hooks/usePatchSerie";
 import { safeParse } from "valibot";
 import { serieSchema } from "../validations/serie.schema";
 
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+
 
 type Props = {
   trigger: React.ReactNode;
@@ -33,7 +35,7 @@ export default function SerieFormModal({ trigger, serie }: Props) {
   const [estreno, setEstreno] = useState(serie?.estreno || 0);
   const [calificacion, setCalificacion] = useState(serie?.calificacion || 0);
   const [plataforma, setPlataforma] = useState(serie?.plataforma || "");
-  
+
   const handleSubmit = async () => {
     /*
     const payload: PostSerieRequest = {
@@ -97,13 +99,15 @@ export default function SerieFormModal({ trigger, serie }: Props) {
       size="lg"
       footer={
         <div className="flex gap-3">
-          <button className=" px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
-            Cancelar
-          </button>
+
+          <DialogPrimitive.Close asChild>
+            <button className="px-4 py-2 text-green-600 font-bold border rounded  hover:bg-green-200 transition">Cancelar</button>
+          </DialogPrimitive.Close>
+
           <button
             onClick={handleSubmit}
-            disabled={loading}
-            className=" px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
+            
+            className=" px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition"
           >
             {loading ? "Guardando..." : "Guardar"}
           </button>

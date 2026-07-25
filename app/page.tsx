@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import SerieCard from "./series/components/SerieCard";
 import Banner from "@/ui/components/Banner";
-import CartBubble from "@/ui/components/CartBubble";
+//// import CartBubble from "@/ui/components/CartBubble";
 
 export default function Home() {
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <CartBubble />
+      {/*<CartBubble />*/}
     </div>
   );
 }

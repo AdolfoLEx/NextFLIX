@@ -121,3 +121,14 @@ export interface TopLevel {
     plataforma:   string;
 }
 */
+
+export interface Serie {
+    id:           number;
+    titulo:       string;
+    genero:       string;
+    sinopsis:     string;
+    urlPortada:   string;
+    estreno:      number;
+    calificacion: number;
+    plataforma:   string;
+}

@@ -46,16 +46,16 @@ export default function DeleteSerieModal({
       footer={
         <>
           <DialogPrimitive.Close asChild>
-            <button className="px-4 py-2 border rounded">Cancelar</button>
+            <button className="px-4 py-2 text-white  bg-green-600 hover:bg-green-700 transition font-bold border rounded">Cancelar</button>
           </DialogPrimitive.Close>
+
           <button
-            className="px-4 py-2 bg-red-500 text-white rounded"
+            className="px-4 py-2 bg-red-500  text-white hover:bg-red-700 transition rounded"
             //onClick={() => onDelete(serieId)}
             onClick={handleDelete}
             disabled={loading}
           >
             {loading ? "Eliminando..." : "Eliminar"}
-
           </button>
         </>
       }

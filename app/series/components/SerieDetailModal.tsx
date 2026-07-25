@@ -1,4 +1,5 @@
 import DialogComponent from "@/ui/components/Dialog";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 /*
 type Serie = {
@@ -35,11 +36,15 @@ export default function SerieDetailModal({ serie, trigger }: Props) {
       urlPortada={serie.urlPortada}
       size="md"
       footer={
-        <p className="text-sm text-muted-foreground">
-          Estreno: {serie.estreno}
+        <p className="text-sm text-red-900">
+            Estreno: <span className="font-semibold">{serie.estreno}</span>
         </p>
       }
     >
+      <DialogPrimitive.Close asChild>
+        <button className="px-4 py-2 text-green-600 font-bold border rounded">Cerrar</button>
+      </DialogPrimitive.Close>
+
       <></>
     </DialogComponent>
   );

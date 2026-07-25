@@ -42,7 +42,7 @@ export default function SerieCard({
   actions,
 }: SerieCardProps) {
   return (
-    <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
+    <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-gray-300 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
       {/* 
       <Image
         width={50}
@@ -67,14 +67,14 @@ export default function SerieCard({
       <div className="flex flex-1 flex-col p-4">
         <div className="space-y-3">
 
-          <h2 className="text-lg font-semibold leading-snug text-slate-900">
+          <h2 className="text-center text-lg font-semibold leading-snug text-slate-900">
             {titulo}
           </h2>
           
           {calificacion !== undefined && (
             <div className="flex items-center gap-1 text-sm">
-              <span className="text-yellow-700">★</span>
-              <span className="text-slate-600">{calificacion.toFixed(1)}</span>
+              <span className="text-yellow-600">★</span>
+              <span className="text-yellow-800 font-extrabold">{calificacion.toFixed(1)}</span>
             </div>
           )}
 
@@ -84,20 +84,18 @@ export default function SerieCard({
             </span>
           )}
 
-          <p className="text-sm leading-6 text-slate-600">
+          <p className="text-sm leading-6 text-slate-700">
             {sinopsis.slice(0, 80)}...
           </p>
-
-
 
         </div>
 
         <div className="mt-auto pt-6">
-          <p className="text-lg font-bold text-slate-900">{estreno}</p>
+          <p className="text-lg font-extralight text-red-800">{estreno}</p>
         </div>
 
         <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
-          {plataforma}
+          <p className="text-lg text-green-800">{plataforma}</p>
         </div>
 
       </div>
