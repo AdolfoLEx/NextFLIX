@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import { useState } from "react";
 import DialogComponent from "@/ui/components/Dialog";
 import { Serie, PostSerieRequest } from "../interfaces/serie.interface";
 import usePostSerie from "../hooks/usePostSerie";
@@ -22,6 +23,8 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const loading = loadingCreate || loadingUpdate;
   const error = errorCreate || errorUpdate;
 
+  // 1. Estados iniciales
+  const [prevSerie, setPrevSerie] = useState(serie);
   const [titulo, setTitulo] = useState(serie?.titulo || "");
   const [genero, setGenero] = useState(serie?.genero || "");
   const [sinopsis, setSinopsis] = useState(serie?.sinopsis || "");
@@ -30,18 +33,20 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const [calificacion, setCalificacion] = useState(serie?.calificacion || 0);
   const [plataforma, setPlataforma] = useState(serie?.plataforma || "");
 
-  // Sincronizar el formulario si cambia la serie seleccionada
-  useEffect(() => {
-    if (serie) {
-      setTitulo(serie.titulo || "");
-      setGenero(serie.genero || "");
-      setSinopsis(serie.sinopsis || "");
-      setUrlPortada(serie.urlPortada || "");
-      setEstreno(serie.estreno || 2024);
-      setCalificacion(serie.calificacion || 0);
-      setPlataforma(serie.plataforma || "");
-    }
-  }, [serie]);
+  // 2. Sincronización SÍNCRONA durante el render (¡Sin useEffect!)
+  if (serie !== prevSerie) {
+    setPrevSerie(serie);
+    setTitulo(serie?.titulo || "");
+    setGenero(serie?.genero || "");
+    setSinopsis(serie?.sinopsis || "");
+    setUrlPortada(serie?.urlPortada || "");
+    setEstreno(serie?.estreno || 2024);
+    setCalificacion(serie?.calificacion || 0);
+    setPlataforma(serie?.plataforma || "");
+  }
+
+  // 3. Funciones del componente (handleSubmit, etc.)
+  // ...
 
   const handleSubmit = async () => {
     const payload: PostSerieRequest = {
