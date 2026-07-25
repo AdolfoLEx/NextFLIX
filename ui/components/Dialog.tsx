@@ -1,7 +1,10 @@
 "use client";
+
 import * as Dialog from "@radix-ui/react-dialog";
 
 type DialogProps = {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   trigger: React.ReactNode;
   children: React.ReactNode;
   titulo?: string;
@@ -12,6 +15,8 @@ type DialogProps = {
 };
 
 export default function DialogComponent({
+  open,
+  onOpenChange,
   trigger,
   children,
   titulo,
@@ -27,10 +32,12 @@ export default function DialogComponent({
   };
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+      
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm" />
+        
         <Dialog.Content
           className={`pt-4 fixed left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-3xl bg-white shadow-2xl outline-none ${sizes[size]}`}
         >
@@ -75,7 +82,7 @@ export default function DialogComponent({
           <Dialog.Close className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400">
             <span className="text-xl leading-none">×</span>
           </Dialog.Close>
-          
+
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

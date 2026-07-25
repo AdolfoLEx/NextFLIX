@@ -1,6 +1,5 @@
 "use client";
 
-//import { useState, useEffect } from "react";
 import { useState } from "react";
 import DialogComponent from "@/ui/components/Dialog";
 import { Serie, PostSerieRequest } from "../interfaces/serie.interface";
@@ -23,7 +22,12 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const loading = loadingCreate || loadingUpdate;
   const error = errorCreate || errorUpdate;
 
-  // 1. Estados iniciales
+
+ // 1A. Agregas este estado para controlar si el modal está abierto
+// Estado del modal
+  const [open, setOpen] = useState(false);
+
+  // Estados del formulario y sincronización
   const [prevSerie, setPrevSerie] = useState(serie);
   const [titulo, setTitulo] = useState(serie?.titulo || "");
   const [genero, setGenero] = useState(serie?.genero || "");
@@ -34,7 +38,7 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const [plataforma, setPlataforma] = useState(serie?.plataforma || "");
 
   // 2. Sincronización SÍNCRONA durante el render (¡Sin useEffect!)
-  if (serie !== prevSerie) {
+if (serie !== prevSerie) {
     setPrevSerie(serie);
     setTitulo(serie?.titulo || "");
     setGenero(serie?.genero || "");
@@ -73,16 +77,20 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
         await createSerie(payload);
       }
 
+      setOpen(false); // Cierra el modal tras la petición exitosa
+
       if (onSuccess) {
         onSuccess();
       }
-    } catch {
-      // El estado de error se gestiona mediante los custom hooks
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
     <DialogComponent
+      open={open}
+      onOpenChange={setOpen}
       trigger={trigger}
       titulo={serie ? "Editar Serie" : "Agregando serie"}
       sinopsis="Información de la serie"
