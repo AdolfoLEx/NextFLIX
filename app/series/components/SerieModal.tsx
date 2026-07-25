@@ -2,26 +2,12 @@
 
 import DialogComponent from "@/ui/components/Dialog";
 
-/*
-type SerieModalProps = {
-  title: string;
-  description: string;
-};
-*/
 type SerieModalProps = {
   titulo: string;
-  sipnopsis: string;
+  sinopsis: string;
 };
 
-
-export default function SerieModal({
-  /*
-  title,
-  description,
-  */
-  titulo,
-  sipnopsis,  
-}: SerieModalProps) {
+export default function SerieModal({ titulo, sinopsis }: SerieModalProps) {
   return (
     <DialogComponent
       trigger={
@@ -41,7 +27,7 @@ export default function SerieModal({
         </div>
 
         <div className="rounded-2xl bg-slate-50 p-4">
-          <p className="text-sm leading-7 text-slate-600">{sipnopsis}</p>
+          <p className="text-sm leading-7 text-slate-600">{sinopsis}</p>
         </div>
       </div>
     </DialogComponent>

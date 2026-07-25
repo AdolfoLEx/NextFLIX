@@ -1,112 +1,47 @@
+"use client";
+
 import React from "react";
+import { Serie } from "../interfaces/serie.interface";
 
-/*
 type SerieCardProps = {
-  title: string;
-  price: number;
-  image: string;
-  description: string;
-  rating?: number; // Optional property for rating
-  category?: string; // Propiedad opcional para la categoría
-  actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
-};
-*/
-type SerieCardProps = {
-  titulo: string;
-  genero?: string; // Opcional
-  sinopsis: string;
-  urlPortada: string;
-  estreno: number;
-  calificacion?: number; // Opcional la Calificación
-  plataforma: string;
-  actions?: React.ReactNode; // Propiedad opcional para acciones adicionales
+  serie: Serie;
+  actions?: React.ReactNode;
 };
 
-export default function SerieCard({
-  /*
-  title,
-  price,
-  image,
-  description,
-  rating,
-  category,
-  actions,
-  */
-  titulo,
-  genero,
-  sinopsis,
-  urlPortada,
-  estreno,
-  calificacion,
-  plataforma,
-  actions,
-}: SerieCardProps) {
-
-  console.log("Datos de la serie:", { titulo, plataforma });
+export default function SerieCard({ serie, actions }: SerieCardProps) {
   return (
-    <div className="flex h-full w-85 flex-col overflow-hidden rounded-2xl bg-gray-300 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-      {/* 
-      <Image
-        width={50}
-        height={50}
-        src={image}
-        alt={title}
-        className="h-50 w-full object-contain"
-      />*/}
-
-      {/* Etiqueta HTML nativa <img> */}
-      <img
-        src={urlPortada || "/placeholder.png"} // Un fallback opcional por si image viene vacío o null
-        alt={titulo}
-        className="h-50 w-full object-contain p-2"
-        loading="lazy" // Carga diferida nativa del navegador
-        onError={(e) => {
-          // Si la URL de la imagen falla al cargar o está rota, se reemplaza por un placeholder
-          e.currentTarget.src = "https://via.placeholder.com/150?text=No+Image";
-        }}
-      />
-
-      <div className="flex flex-1 flex-col p-4">
-        <div className="space-y-3">
-
-          <h2 className="text-center text-lg font-semibold leading-snug text-slate-900">
-            {titulo}
-          </h2>
-
-          {calificacion !== undefined && (
-            <div className="flex items-center gap-1 text-sm">
-              <span className="text-yellow-600">★</span>
-              <span className="text-yellow-800 font-extrabold">{calificacion.toFixed(1)}</span>
-            </div>
-          )}
-
-          {genero && (
-            <span className="inline-flex w-fit rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700">
-              {genero}
+    <div className="overflow-hidden rounded-2xl bg-white shadow-md transition-all hover:shadow-xl flex flex-col justify-between">
+      <div>
+        <div className="relative h-64 w-full overflow-hidden bg-slate-200">
+          <img
+            src={serie.urlPortada || "/placeholder.jpg"}
+            alt={serie.titulo}
+            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+        <div className="p-4 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase text-indigo-600 bg-indigo-50 px-2 py-1 rounded">
+              {serie.genero}
             </span>
-          )}
-
-          <p className="text-sm leading-6 text-slate-700">
-            {sinopsis.slice(0, 80)}...
+            <span className="text-xs text-slate-500 font-semibold">
+              {serie.estreno}
+            </span>
+          </div>
+          <h3 className="text-lg font-bold text-slate-900 line-clamp-1">
+            {serie.titulo}
+          </h3>
+          <p className="text-sm text-slate-600 line-clamp-2">
+            {serie.sinopsis}
           </p>
-
         </div>
-
-
-        <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
-          <p className="text-lg text-green-800">{plataforma}</p>
-        </div>
-
-        <div className="mt-auto pt-6">
-          <p className="text-lg font-extralight text-red-800">{estreno}</p>
-        </div>
-
       </div>
 
-      <div className="flex justify-end gap-2 border-t border-slate-100 px-4 py-4">
-        {actions}
-      </div>
-
+      {actions && (
+        <div className="p-4 pt-0 border-t border-slate-100 mt-2">
+          {actions}
+        </div>
+      )}
     </div>
   );
 }

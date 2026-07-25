@@ -1,40 +1,52 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SerieCard from "./series/components/SerieCard";
 import Banner from "@/ui/components/Banner";
-//// import CartBubble from "@/ui/components/CartBubble";
+import { getSeries } from "./series/service/serie.service";
+import { Serie } from "./series/interfaces/serie.interface";
 
 export default function Home() {
+  const [serieAleatoria, setSerieAleatoria] = useState<Serie | null>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // This code will run on the client side after the component mounts
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    getSeries()
+      .then((data: Serie[]) => {
+        if (data && data.length > 0) {
+          // Selecciona un índice al azar entre 0 y la longitud del arreglo - 1
+          const randomIndex = Math.floor(Math.random() * data.length);
+          setSerieAleatoria(data[randomIndex]);
+        }
+      })
+      .catch((err) => console.error("Error al obtener series:", err))
+      .finally(() => setLoading(false));
   }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Banner />
       <div className="max-w-6xl mx-auto px-6 py-20">
-        {/* Series */}
         <div className="mt-24">
           <h2 className="text-2xl font-bold text-slate-900 text-center">
-            Series destacadas
+            Serie destacada
           </h2>
           <p className="mt-2 text-slate-500 text-center">
             ¿Quieres ver una de nuestras Series?
           </p>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <SerieCard
-              titulo="Serie o Película de ejemplo"
-              estreno={2000}
-              urlPortada="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxsMYDYTWUSR5KVp29wK8dEuhTZ1mOSmsja4aPVkLyOA&s=10"
-              sinopsis="Este es una serie de ejemplo de SerieCard."
-            />
+          <div className="mt-10 flex justify-center">
+            {loading ? (
+              <p className="text-slate-400">Cargando serie destacada...</p>
+            ) : serieAleatoria ? (
+              <div className="w-full max-w-sm">
+                <SerieCard serie={serieAleatoria} />
+              </div>
+            ) : (
+              <p className="text-slate-400">No hay series disponibles por el momento.</p>
+            )}
           </div>
         </div>
       </div>
-      {/*<CartBubble />*/}
     </div>
   );
 }

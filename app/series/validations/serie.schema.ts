@@ -11,5 +11,6 @@ export const serieSchema = object(
             string(),
         minLength(10, "La sinopsis debe tener al menos 10 caracteres"),
         ),  
+        
     }
 );

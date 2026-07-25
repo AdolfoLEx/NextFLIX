@@ -54,11 +54,10 @@ export default function Series() {
           <button
             key={genero}
             onClick={() => setSelectedCategory(genero)}
-            className={`group relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ease-out ${
-              selectedCategory === genero
+            className={`group relative rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ease-out ${selectedCategory === genero
                 ? "-translate-y-0.5 text-white shadow-lg shadow-indigo-500/30"
                 : "border border-gray-200/80 bg-white/60 text-gray-600 backdrop-blur-sm hover:-translate-y-0.5 hover:border-gray-300 hover:text-gray-900 hover:shadow-md"
-            }`}
+              }`}
           >
             {selectedCategory === genero && (
               <span className="animate-in fade-in zoom-in-95 absolute inset-0 rounded-full bg-linear-to-r from-red-900 via-red-600 to-red-800 duration-300" />
@@ -74,6 +73,7 @@ export default function Series() {
       </div>
 
       {/* Grid de tarjetas */}
+      {/*
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4 lg:gap-20">
         {filteredSeries.map((serie) => (
           <SerieCard
@@ -137,6 +137,73 @@ export default function Series() {
           />
         ))}
       </div>
+*/}
+
+      {/* Grid de tarjetas */}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4 lg:gap-20">
+        {filteredSeries.map((serie) => (
+          <SerieCard
+            key={serie.id}
+            serie={serie}
+            actions={
+              <div className="flex w-full items-center justify-between gap-3">
+                <SerieDetailModal
+                  serie={serie}
+                  trigger={
+                    <button
+                      type="button"
+                      aria-label="Ver detalles"
+                      title="Ver detalles"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-slate-500 shadow-md ring-1 ring-slate-900/5 transition-all duration-200 hover:-translate-y-0.5 hover:text-slate-800 hover:shadow-lg"
+                    >
+                      <Eye size={17} strokeWidth={2} />
+                    </button>
+                  }
+                />
+
+                <div className="flex items-center gap-2">
+                  <SerieFormModal
+                    serie={serie}
+                    trigger={
+                      <button
+                        type="button"
+                        aria-label="Editar serie"
+                        title="Editar"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-b from-indigo-50 to-indigo-100/80 text-indigo-600 shadow-md ring-1 ring-indigo-900/5 transition-all duration-200 hover:-translate-y-0.5 hover:from-indigo-100 hover:to-indigo-200/80 hover:text-indigo-700 hover:shadow-lg"
+                      >
+                        <Pencil size={18} strokeWidth={2} />
+                      </button>
+                    }
+                  />
+
+                  <DeleteSerieModal
+                    serieId={serie.id}
+                    onDelete={() =>
+                      console.log(`Serie con ID ${serie.id} eliminada`)
+                    }
+                    trigger={
+                      <button
+                        type="button"
+                        aria-label="Eliminar serie"
+                        title="Eliminar serie"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-b from-rose-50 to-rose-100/80 text-rose-600 shadow-md ring-1 ring-rose-900/5 transition-all duration-200 hover:-translate-y-0.5 hover:from-rose-100 hover:to-rose-200/80 hover:text-rose-700 hover:shadow-lg focus:outline-none"
+                      >
+                        <Trash2 size={17} strokeWidth={2} />
+                      </button>
+                    }
+                  />
+                </div>
+              </div>
+            }
+          />
+        ))}
+      </div>
+
+
+
+
+
+
     </div>
   );
 }
