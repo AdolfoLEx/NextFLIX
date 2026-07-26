@@ -13,9 +13,9 @@ export function useGetSerie() {
         setSeries(data);
         setLoading(false);
       })
-      // ✅ Esto te dirá exactamente qué pasó
+
       .catch((err) => {
-        console.error("Detalle del error:", err); // <-- Revisa la consola de tu navegador
+        console.error("Detalle del error:", err);
         setError(err.message || "Error al cargar series");
         setLoading(false);
       });

@@ -5,27 +5,6 @@ import {
   DeleteSerieResponse,
   PatchSerieResponse, 
 } from "../interfaces/serie.interface";
-//import { series } from "@/data/series";
-
-/*
-export async function getSeries() {
-  return apiFetch("/series");
-}
-*/
-
-/*
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-export async function getSeries() {
-  const response = await fetch(`${API_URL}/series`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    },
-  });
-  return response.json();
-}*/
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -54,17 +33,6 @@ export async function getSeries() {
   return response.json();
 }
 
-/*
-export function postSerie(
-  data: PostSerieRequest,
-): Promise<PostSerieResponse> {
-  return apiFetch("/series", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
-}
-*/
-
 export function postSerie(
   data: PostSerieRequest,
 ): Promise<PostSerieResponse> {
@@ -77,12 +45,6 @@ export function postSerie(
     body: JSON.stringify(data),
   });
 }
-/*
-export function deleteSerie(id: number): Promise<DeleteSerieResponse> {
-  return apiFetch(`/series/${id}`, {
-    method: "DELETE",
-  });
-}*/
 
 export function deleteSerie(id: number | string): Promise<DeleteSerieResponse> {
   return apiFetch(`/series/${id}`, {
@@ -93,7 +55,6 @@ export function deleteSerie(id: number | string): Promise<DeleteSerieResponse> {
     },
   });
 }
-
 
 export function patchSerie(
   id: number,

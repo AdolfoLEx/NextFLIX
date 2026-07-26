@@ -1,15 +1,6 @@
 import DialogComponent from "@/ui/components/Dialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 
-/*
-type Serie = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-};
-*/
 type Serie = {
   id: number;
   titulo: string;
@@ -20,7 +11,6 @@ type Serie = {
   calificacion: number;
   plataforma: string;
 };
-
 
 type Props = {
   serie: Serie;
@@ -33,17 +23,19 @@ export default function SerieDetailModal({ serie, trigger }: Props) {
       trigger={trigger}
       titulo={serie.titulo}
       sinopsis={serie.sinopsis}
-      urlPortada={serie.urlPortada}      
+      urlPortada={serie.urlPortada}
       size="md"
       footer={
-<p className="text-sm text-red-900 flex items-center justify-between gap-3">
-  <span>{serie.plataforma}</span>
-  <span className="font-bold text-base">{serie.estreno}</span>
-</p>
+        <p className="text-sm text-red-900 flex items-center justify-between gap-3">
+          <span>{serie.plataforma}</span>
+          <span className="font-bold text-base">{serie.estreno}</span>
+        </p>
       }
     >
       <DialogPrimitive.Close asChild>
-        <button className="px-4 py-2 text-green-600 font-bold border rounded">Cerrar</button>
+        <button className="rounded border px-4 py-2 font-bold text-white bg-green-800 hover:bg-green-600 transition-colors">
+          Cerrar
+        </button>
       </DialogPrimitive.Close>
 
       <></>

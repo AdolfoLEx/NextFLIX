@@ -22,9 +22,7 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const loading = loadingCreate || loadingUpdate;
   const error = errorCreate || errorUpdate;
 
-
-  // 1A. Agregas este estado para controlar si el modal está abierto
-  // Estado del modal
+  // Estado del modal para controlar si el modal está abierto
   const [open, setOpen] = useState(false);
 
   // Estados del formulario y sincronización
@@ -50,7 +48,6 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   }
 
   // 3. Funciones del componente (handleSubmit, etc.)
-
   const handleSubmit = async () => {
     const payload: PostSerieRequest = {
       titulo,

@@ -41,7 +41,7 @@ export default function Home() {
               Serie destacada
             </h2>
             <p className="text-slate-400 text-base sm:text-lg max-w-md mx-auto font-light">
-              ¿No sabes qué ver? Te sugerimos un título randómico especial para hoy.
+              <span className="font-semibold text-slate-200">¿No sabes qué ver?</span> Te sugerimos un título <span className="font-semibold text-slate-200">randómico</span> especial para hoy.
             </p>
           </div>
 
