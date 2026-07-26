@@ -40,25 +40,27 @@ export default function DeleteSerieModal({
       sinopsis="¿Estás seguro de que quieres eliminar esta serie?"
       size="sm"
       footer={
-        <>
+        <div className="flex gap-3 justify-end w-full pt-4 border-t border-slate-800/80">
           <DialogPrimitive.Close asChild>
-            <button className="px-4 py-2 text-white bg-green-600 hover:bg-green-700 transition font-bold border rounded">
+            {/* Botón Verde Oscuro con contraste alto al Hover */}
+            <button className="px-5 py-2.5 rounded-xl bg-emerald-950/80 text-white border border-emerald-800/60 font-medium text-sm hover:bg-emerald-600 hover:text-white hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/30 transition-all duration-200">
               Cancelar
             </button>
           </DialogPrimitive.Close>
 
+          {/* Botón Rojo Oscuro con contraste alto al Hover */}
           <button
-            className="px-4 py-2 bg-red-500 text-white hover:bg-red-700 transition rounded"
+            className="px-6 py-2.5 rounded-xl bg-red-950/80 text-white border border-red-800/60 font-semibold text-sm hover:bg-red-600 hover:text-white hover:border-red-500 hover:shadow-lg hover:shadow-red-600/30 transition-all duration-200 disabled:opacity-50"
             onClick={handleDelete}
             disabled={loading}
           >
             {loading ? "Eliminando..." : "Eliminar"}
           </button>
-        </>
+        </div>
       }
     >
-      {error && <p className="text-sm text-red-500">{error}</p>}
-      <p>Esta acción no se puede deshacer.</p>
+      {error && <p className="text-sm text-red-400 mb-2">{error}</p>}
+      <p className="text-slate-300">Esta acción no se puede deshacer.</p>
     </DialogComponent>
   );
 }

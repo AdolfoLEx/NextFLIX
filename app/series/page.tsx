@@ -32,7 +32,7 @@ export default function Series() {
       : series.filter((serie) => serie.genero === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-600 p-8">
+    <div className="min-h-screen bg-gray-800 p-8">
       <h1 className="mb-4 text-2xl font-bold text-red-500">
         Series disponibles
       </h1>

@@ -36,10 +36,10 @@ export default function SerieDetailModal({ serie, trigger }: Props) {
       urlPortada={serie.urlPortada}      
       size="md"
       footer={
-        <p className="text-sm text-red-900">
-            <span>{serie.plataforma}</span>
-            Estreno: <span className="font-semibold">{serie.estreno}</span>
-        </p>
+<p className="text-sm text-red-900 flex items-center justify-between gap-3">
+  <span>{serie.plataforma}</span>
+  <span className="font-bold text-base">{serie.estreno}</span>
+</p>
       }
     >
       <DialogPrimitive.Close asChild>

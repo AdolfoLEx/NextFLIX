@@ -23,8 +23,8 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const error = errorCreate || errorUpdate;
 
 
- // 1A. Agregas este estado para controlar si el modal está abierto
-// Estado del modal
+  // 1A. Agregas este estado para controlar si el modal está abierto
+  // Estado del modal
   const [open, setOpen] = useState(false);
 
   // Estados del formulario y sincronización
@@ -38,7 +38,7 @@ export default function SerieFormModal({ trigger, serie, onSuccess }: Props) {
   const [plataforma, setPlataforma] = useState(serie?.plataforma || "");
 
   // 2. Sincronización SÍNCRONA durante el render (¡Sin useEffect!)
-if (serie !== prevSerie) {
+  if (serie !== prevSerie) {
     setPrevSerie(serie);
     setTitulo(serie?.titulo || "");
     setGenero(serie?.genero || "");
@@ -50,7 +50,6 @@ if (serie !== prevSerie) {
   }
 
   // 3. Funciones del componente (handleSubmit, etc.)
-  // ...
 
   const handleSubmit = async () => {
     const payload: PostSerieRequest = {
@@ -96,17 +95,19 @@ if (serie !== prevSerie) {
       sinopsis="Información de la serie"
       size="lg"
       footer={
-        <div className="flex gap-3">
+        <div className="flex gap-3 justify-end w-full pt-4 border-t border-slate-800/80">
           <DialogPrimitive.Close asChild>
-            <button className="px-4 py-2 text-green-600 font-bold border rounded hover:bg-green-200 transition">
+            {/* Botón Verde Oscuro (Cancelar) */}
+            <button className="px-5 py-2.5 rounded-xl bg-emerald-950/80 text-white border border-emerald-800/60 font-medium text-sm hover:bg-emerald-600 hover:text-white hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-600/30 transition-all duration-200">
               Cancelar
             </button>
           </DialogPrimitive.Close>
 
+          {/* Botón Rojo Principal NextFLIX (Guardar) */}
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition disabled:opacity-50"
+            className="px-6 py-2.5 rounded-xl bg-red-600 text-white font-semibold text-sm hover:bg-red-500 hover:shadow-lg hover:shadow-red-600/40 active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
           >
             {loading ? "Guardando..." : "Guardar"}
           </button>
